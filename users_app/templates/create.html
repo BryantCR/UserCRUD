@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>All users</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">    </head>
+    <body>
+        <main class="holdContent" style="padding: 10% 25%;">
+            <div class="pageTittle" style="display: flex; flex-direction: row; align-items: center;">
+                <h2 style="display: inline; margin: 0 20%;">
+                    Create New User
+                </h2>
+                <a href="/users">Home</a>
+            </div>
+            <form class="holdInputsLabels" action="/users/new" method="POST" autocomplete="off">
+                <div class="mb-3">
+                    <label class="form-label" for="first_name">First Name: </label>
+                    <input class="form-control" type="text" name="first_name" id="first_name" placeholder="Insert your name here!">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="last_name">last Name: </label>
+                    <input class="form-control" type="text" name="last_name" id="last_name" placeholder="Insert your last name here!">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email: </label>
+                    <input class="form-control" type="text" name="email" id="email" placeholder="Insert your email here!">
+                </div>
+                <div class="col-auto">
+                    <input class="btn btn-primary mb-3" type="submit" value="Create" name="buttonSubmitForm" id="buttonSubmitForm">
+                </div>
+            </form>
+        </main>
+    </body>
+</html>
