@@ -23,33 +23,22 @@ class User:
         result = connectToMySQL('users_shema').query_db(query,data)
         return result
 
-    def full_name(self):
-        return f"{self.first_name} {self.last_name}"
-    
+    @classmethod
+    def editUserData(cls, data):
+        query = "UPDATE users SET first_name = %(first_name2)s, last_name = %(last_name2)s, email = %(email2)s, created_at = SYSDATE(), updated_at = SYSDATE() WHERE id=%(id)s;"
+        result = connectToMySQL('users_shema').query_db(query,data)
+        return result
 
-
-    # @classmethod
-    # def get_all(cls):
-    #     query = "SELECT * FROM users;"
-    #     results = connectToMySQL('users_schema').query_db(query)
-    #     users = []
-    #     for u in results:
-    #         users.append( cls(u) )
-    #     return users
-
-    # @classmethod
-    # def save(cls, data):
-    #     query = "INSERT INTO users (first_name,last_name,email) VALUES (%(first_name)s,%(last_name)s,%(email)s);"
-
-    #     # comes back as the new row id
-    #     result = connectToMySQL('users_schema').query_db(query,data)
-    #     return result
-
-    # @classmethod
-    # def get_one(cls,data):
-    #     query  = "SELECT * FROM users WHERE id = %(id)s";
-    #     result = connectToMySQL('users_schema').query_db(query,data)
-    #     return cls(result[0])
+    @classmethod
+    def get_one(cls, data):
+        query  = "SELECT * FROM users WHERE id = %(id)s;"
+        data = {
+            "id" : id,
+            "first_name" : first_name,
+            
+        }
+        result = connectToMySQL('users_schema').query_db(query,data)
+        return cls(result[0])
 
     # @classmethod
     # def update(cls,data):
