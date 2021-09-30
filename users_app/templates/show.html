@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dojo Survey results</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='./../../static/css/styles.css' )}}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    </head>
+    <body>
+        <main class="holdBodyForm">
+            <form class="holdInputsLabels" action="/" method="POST" autocomplete="off">
+                <h1 class="resultTittle">Submited Info</h1>
+                <p class="resultName">Name: {{session['userNameForm']}}</p>
+                <p class="resultlocation">Dojo Location: {{session['locationsForm']}}</p>
+                <p class="resultLanguage">Favorite Language: {{session['languagesForm']}}</p>
+                <p class="resultComments">Comments: {{session['commentFormForm']}}</p>
+                <div class="justSubmitButton">
+                    <input type="submit" value="Go back" name="buttonSubmitForm" id="buttonSubmitForm">
+                </div>
+            </form>
+        </main>
+    </body>
+</html>
