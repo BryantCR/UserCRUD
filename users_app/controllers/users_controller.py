@@ -22,12 +22,10 @@ def create():
     User.addDataForm(request.form)
     return redirect('/users')
 
-@app.route('/user/edit/<id>')
-id2 = int(id)
-def goAndEdit(id):
+@app.route('/user/edit')
+def goAndEdit():
     return render_template("edit.html")
 
 @app.route('/user/show/<id>')
-id2 = int(id)
 def showUserData(id):
     return render_template("show.html")
