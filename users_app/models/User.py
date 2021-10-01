@@ -1,5 +1,6 @@
 from users_app.confing.MySQLConnection import connectToMySQL
-from users_app.models.User import User
+from users_app import app 
+from datetime import date, datetime
 
 class User:
     def __init__(self, id, first_name, last_name, email, created_at):
@@ -24,14 +25,15 @@ class User:
         result = connectToMySQL('users_shema').query_db(query,data)
         return result
 
-    @classmethod
+    @classmethod#################################################################################
     def editUserData(cls, data):
-        query = "UPDATE users SET first_name = %(first_name2)s, last_name = %(last_name2)s, email = %(email2)s, updated_at = SYSDATE() WHERE id=%(id)s;"
+        query = "UPDATE users SET first_name = %(first_name2Fromform2)s, last_name = %(lastst_name2Fromform2)s, email = %(email2Fromform2)s, updated_at = SYSDATE() WHERE id=%(id)s;"
         result = connectToMySQL('users_shema').query_db(query, data)
+        print(data)
         return result
 
     @classmethod
-    def get_one(cls, data):
+    def get_one(cls, id):
         print("8")
         query  = "SELECT * FROM users WHERE id = %(id)s;"
         data = {
@@ -40,8 +42,8 @@ class User:
         result = connectToMySQL('users_shema').query_db( query, data )
         user_data = []
 
-        for users in result:
-            user_data.append(User(user['id'],user['first_name'], user['last_name'], user['email'],user['created_at'],user['updated_at']))
+        #for users in result:
+            #user_data.append(User(user['id'],user['first_name'], user['last_name'], user['email'],user['created_at'],user['updated_at']))
         print("9", user_data )
         return result
 
