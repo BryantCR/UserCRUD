@@ -26,19 +26,22 @@ class User:
     @classmethod
     def editUserData(cls, data):
         query = "UPDATE users SET first_name = %(first_name2)s, last_name = %(last_name2)s, email = %(email2)s, created_at = SYSDATE(), updated_at = SYSDATE() WHERE id=%(id)s;"
-        result = connectToMySQL('users_shema').query_db(query,data)
+        result = connectToMySQL('users_shema').query_db(query, data)
         return result
 
     @classmethod
     def get_one(cls, data):
         query  = "SELECT * FROM users WHERE id = %(id)s;"
         data = {
-            "id" : id,
-            "first_name" : first_name,
-            
+            "id" : id
         }
-        result = connectToMySQL('users_schema').query_db(query,data)
-        return cls(result[0])
+        result = connectToMySQL('users_shema').query_db( query, data )
+        return result
+
+    @classmethod
+    def deleteUser(cls, data ):
+        query = "DELETE FROM users WHERE id = %(id)s;"
+        return connectToMySQL('users_shema').query_db( query, data )
 
     # @classmethod
     # def update(cls,data):

@@ -24,29 +24,45 @@ def create():
 
 #//////////////////////////////////////// EDIT PART ///////////////////////////////////////////
 #We're trying to get into a new page called edit
-@app.route('/users/edit/<id>')
-def goAndEdit(id):
-    updatedUsersInTable = User.get_one(id)
-    print(updatedUsersInTable)
-    return render_template("edit.html", users1 = updatedUsersInTable, id = id)
+# @app.route('/users/edit')
+# def goAndEdit():
+#     updatedUsersInTable = User.get_one()
+#     print(updatedUsersInTable)
+#     return render_template("edit.html", users1 = updatedUsersInTable)
 
 #Here we're trying to redirect to the next page
-@app.route('/users/show/<id>')
+@app.route('/users/edit/<id>')
 def showUsersData(id):
     updatedUsersInTable = User.get_one(id)
     print("EditUserData: ", updatedUsersInTable)
-    return render_template("show.html", users1 = updatedUsersInTable, id = id)
+    return render_template("edit.html", users1 = updatedUsersInTable, id = id)
 
 #We're trying to got a form here
-@app.route('/users/edit2', methods=['POST'])
-def gotAndEditForm():
-    User.editUserData(request.form)
-    print("EditUserData: ", request.form)
-    return render_template("show.html")
+@app.route('/users/show/<id>', methods=['POST'])
+def gotAndEditForm(id):
+
+    data = {
+        "first_name2Fromform2" : request.form['first_name2'],
+        "lastst_name2Fromform2" : request.form['last_name2'],
+        "email2Fromform2" : request.form['email2']
+    }
+
+    result = User.editUserData( data )
+    print("EditUserData: ", result)
+    return render_template("show.html", users1 = result, id = id )
+
+@app.route("/users/delete/<id>")
+def deleteThisUser(id):
+    data={
+        'id': id
+    }
+    result2 = User.deleteUser(data)
+    print("EditUserData: ", result2)
+    return redirect('/users')
 
 #Here we create the form for update the data from an user
-@app.route('/users/edit/<id>')
-def editUserData(id):
-    currentUsersInTable = User.get_all_users()
-    print("EditUserData: ", currentUsersInTable)
-    return render_template("edit.html", users1 = currentUsersInTable, id = id)
+# @app.route('/users/show/<id>')
+# def editUserData(id):
+#     currentUsersInTable = User.get_one(id)
+#     print("EditUserData: ", currentUsersInTable)
+#     return render_template("edit.html", users1 = currentUsersInTable, id = id)
