@@ -31,19 +31,18 @@ def showUsersData(id):
     return render_template("edit.html", users1 = updatedUsersInTable, id = id)
 
 #We're trying to got a form here
-@app.route('/users/show/<id>', methods=['POST'])####################################
+@app.route('/users/show/<id>', methods=['POST'])
 def gotAndEditForm(id):
     data = {
         "first_name2Fromform2" : request.form['first_name2'],
         "lastst_name2Fromform2" : request.form['last_name2'],
-        "email2Fromform2" : request.form['email2']
-        #"updated_at" : ['updated_at']
+        "email2Fromform2" : request.form['email2'],
+        "id" : id
     }
-    user = User.get_one(data, id)
-    print(user)
-    result = User.editUserData(data)
+    edited = User.editUserData(data)
+    result = User.get_one(id)
     print("EditUserData: ", result)
-    return render_template ("show.html", users1 = result, id = id )
+    return render_template ("show.html", users1 = result, id = id, edited = edited )
 
 @app.route('/users/data/<id>')
 def showUsersDataInShowPage(id):

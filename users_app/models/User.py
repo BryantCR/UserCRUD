@@ -25,7 +25,7 @@ class User:
         result = connectToMySQL('users_shema').query_db(query,data)
         return result
 
-    @classmethod#################################################################################
+    @classmethod
     def editUserData(cls, data):
         query = "UPDATE users SET first_name = %(first_name2Fromform2)s, last_name = %(lastst_name2Fromform2)s, email = %(email2Fromform2)s, updated_at = SYSDATE() WHERE id=%(id)s;"
         result = connectToMySQL('users_shema').query_db(query, data)

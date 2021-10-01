@@ -17,15 +17,15 @@
             <form action="/users/show/{{id}}" method="POST" class="p-4 bg-primary text-white">
                 <div class="form-group mb-3">
                     <label class="form-label" for="first_name2">First Name:</label>
-                    <input class="form-control" type="text" id="first_name2" name="first_name2" value = "{{users1['first_name']}}">
+                    <input class="form-control" type="text" id="first_name2" name="first_name2" value = "{{users1[0]['first_name']}}">
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label" for="last_name2">Last Name:</label>
-                    <input class="form-control" type="text" id="last_name2" name="last_name2" value= "{{last_name}}">
+                    <input class="form-control" type="text" id="last_name2" name="last_name2" value= "{{users1[0]['last_name']}}">
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label" for="email2">Email:</label>
-                    <input class="form-control" type="email" id="email2" name="email2" value="{{email}}">
+                    <input class="form-control" type="email" id="email2" name="email2" value="{{users1[0]['email']}}">
                 </div>
                 <div class="form-group mt-5 px-5">
                     <input class="form-control" type="submit" value="Update">
